@@ -3,8 +3,8 @@ First Repository for community to make them familiar with git and github.The cod
 # How to Use
 1. Download the repository
 2. Extract the code 
-3. Download Serenium webdriver 
+3. Download Selenium webdriver 
 4. put insta_bot.py and serenium in same folder
-### Install Serenium library (pip install serenium)
+### Install Selenium library (pip install selenium)
 
 ### Run insta_bot.py file (python insta.py)
