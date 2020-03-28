@@ -8,3 +8,4 @@ First Repository for community to make them familiar with git and github.The cod
 ### Install Selenium library (pip install selenium)
 
 ### Run insta_bot.py file (python insta.py)
+### Your Bot is Ready
