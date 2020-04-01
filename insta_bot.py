@@ -1,7 +1,8 @@
 from selenium import webdriver
 from time import sleep
-
+#instaBot Class
 class InstaBot:
+    #Constructor definition
     def __init__(self,user,pw,login,username=''):
         self.driver=webdriver.Chrome()
         self.username=user
@@ -21,6 +22,7 @@ class InstaBot:
         sleep(4)
         self.driver.find_element_by_xpath('/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[2]/div[2]/div/a[1]/div/div/div[1]/span')\
             .click()
+        #Function for facebook login
     def fb_login(self,email,pw):
         sleep(5)
         self.driver.find_element_by_xpath('/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[6]/button/span[2]').click()
@@ -30,6 +32,7 @@ class InstaBot:
             .send_keys(pw)
         self.driver.find_element_by_xpath('/html/body/div[1]/div[3]/div[1]/div/div/div[2]/div[1]/form/div/div[3]/button')\
             .click()
+        #Function for direct login with facebook
     def insta_direct_login(self,user,pw):
         self.find('/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[2]/div/label/input')\
             .send_keys(user)
@@ -38,6 +41,7 @@ class InstaBot:
         self.find('/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[4]/button')\
             .click()
         print('ok')
+        #Function to open profile and getting follower and unfollower list
     def get_unfollower(self):
         sleep(10)
         self.driver.find_element_by_xpath("//a[contains(@href,'/{}/')]".format(self.username))\
@@ -63,7 +67,7 @@ class InstaBot:
         print('followers are: {} \n and following are: {} \n Not followed Back: {} \n'.format('\n'.join(followers),'\n'.join(following),'\n'.join(not_following_back)))
         fwr_file.write('followers are: {} \n and following are: {} \n Not followed Back: {} \n'.format('\n'.join(followers),'\n'.join(following),'\n'.join(not_following_back)))
 
-        
+        #Scrolling and Get text of link from div
     def get_names(self):
         sleep(4)
         scroll_box=self.driver.find_element_by_xpath('/html/body/div[4]/div/div[2]')
@@ -82,13 +86,14 @@ class InstaBot:
         self.find('/html/body/div[4]/div/div[1]/div/div[2]/button')\
             .click()
         return names
+    #Searching for an element till not found
     def find(self,xpath):
         while(len(self.driver.find_elements_by_xpath(xpath))<1):
             print('Not matched')
             sleep(2)
         sleep(4)
         return self.driver.find_element_by_xpath(xpath)
-        
+#Asking For Login Mode        
 m=int(input('Mode of login : 1 for Facebook 2 for Instagram :'))
 mybot=0
 if(m==1):
